@@ -5,6 +5,7 @@ import "errors"
 type ISubject interface {
 	Subscribe(observer Observer)
 	Unsubscribe(observer Observer)
+	SetState(arg interface{})
 	NotifyAll()
 }
 
