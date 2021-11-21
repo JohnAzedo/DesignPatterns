@@ -1,15 +1,14 @@
 package main
 
 import (
-	. "DesignPatterns/observer"
+	. "DesignPatterns/factory"
 )
 
 func main(){
-	subject := Subject{}
+	shipFactory := ShipFactory{}
+	heroShip := shipFactory.Make("Hero", "(Hero) ShipOne").(IHeroShip)
+	enemyShip := shipFactory.Make("Enemy", "(Enemy) ShipTwo")
 
-	subject.Subscribe(Observer{1})
-	subject.Subscribe(Observer{2})
-	subject.Subscribe(Observer{3})
-
-	subject.SetState(2)
+	heroShip.Shot(enemyShip)
+	heroShip.ShowSloganHeroShip()
 }
