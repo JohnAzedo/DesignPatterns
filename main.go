@@ -1,14 +1,16 @@
 package main
 
 import (
-	. "DesignPatterns/factory"
+	"DesignPatterns/strategy"
+	"DesignPatterns/strategy/discount"
+	"fmt"
 )
 
 func main(){
-	shipFactory := ShipFactory{}
-	heroShip := shipFactory.Make("Hero", "(Hero) ShipOne").(IHeroShip)
-	enemyShip := shipFactory.Make("Enemy", "(Enemy) ShipTwo")
 
-	heroShip.Shot(enemyShip)
-	heroShip.ShowSloganHeroShip()
+	disc := discount.NewDiscountBlackFriday()
+	shoppingCart := strategy.NewShoppingCart()
+	shoppingCart.AddProduct(&strategy.Product{Name: "TV", Price: 100.0})
+	shoppingCart.AddProduct(&strategy.Product{Name: "TV", Price: 100.0})
+	fmt.Println(shoppingCart.GetTotalWithDiscount(disc))
 }
